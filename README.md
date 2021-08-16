@@ -1,5 +1,6 @@
 # WebXHRDL
 轻量化的运行在网页内的基于XHR的下载器
+[![](https://data.jsdelivr.com/v1/package/gh/qinlili23333/WebXHRDL/badge)](https://www.jsdelivr.com/package/gh/qinlili23333/WebXHRDL)
 ## 使用说明  
 必须在同一页面上先添加[SakiProgress](https://github.com/qinlili23333/SakiProgress)，使用时直接调用XHRDL.init，无需先初始化SakiProgress  
 
