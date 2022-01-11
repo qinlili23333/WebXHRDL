@@ -177,7 +177,7 @@ var XHRDL = {
                 XHRDL.dlList.splice(0, 1);
                 XHRDL.DLEngine.checkNext();
             }
-            xhr.open('GET', taskInfo.taskUrl)
+            xhr.open('GET', taskInfo.taskUrl, true)
             xhr.send()
         },
         checkNext: function () {
