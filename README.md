@@ -13,5 +13,5 @@
 保存下载列表到LocalStorage，同域共用  
 #### loadTaskList()`0.1.0`  
 从LocalStorage读取下载列表  
-#### newTask(地址，文件名)`0.1.0`  
+#### newTask(地址，文件名，是否立即开始)`0.1.2`  
 新建下载任务并启动下载引擎  
