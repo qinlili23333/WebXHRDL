@@ -1,4 +1,4 @@
-var XHRDL = {
+const XHRDL = {
     isLoaded: false,
     dlList: [],
     listBtn: false,
@@ -7,7 +7,7 @@ var XHRDL = {
     clsBtn: false,
     init: function () {
         if (!this.isLoaded) {
-            console.info("WebXHRDL Initializing!\nVersion:Preview0.1.2\nQinlili Tech:Github@qinlili23333")
+            console.info("WebXHRDL Initializing!\nVersion:Preview0.1.3\nQinlili Tech:Github@qinlili23333")
             try {
                 SakiProgress.init();
             } catch {
@@ -90,15 +90,17 @@ var XHRDL = {
             console.error("Not Initialized Error-Please Call `init` First!")
         }
     },
-    newTask: function (url, name, start) {
+    newTask: function (url, name, start, showadd) {
         if (this.isLoaded) {
             var list = this.dlList;
             list[list.length] = {
                 taskUrl: url,
                 fileName: name
             }
-            SakiProgress.showDiv();
-            SakiProgress.setText("已添加新任务：" + name);
+            if (showadd) {
+                SakiProgress.showDiv();
+                SakiProgress.setText("已添加新任务：" + name);
+            }
             if (!this.DLEngine.isWorking && start) {
                 this.DLEngine.start();
             }
