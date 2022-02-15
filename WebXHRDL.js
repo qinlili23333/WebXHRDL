@@ -7,10 +7,10 @@ var XHRDL = {
     clsBtn: false,
     init: function () {
         if (!this.isLoaded) {
-            console.info("WebXHRDL Initializing!\nVersion:Preview0.1.0\nQinlili Tech:Github@qinlili23333")
+            console.info("WebXHRDL Initializing!\nVersion:Preview0.1.2\nQinlili Tech:Github@qinlili23333")
             try {
                 SakiProgress.init();
-            } catch{
+            } catch {
                 console.error("Initialize Failed!Is SakiProgress Loaded?")
                 return false;
             }
@@ -90,7 +90,7 @@ var XHRDL = {
             console.error("Not Initialized Error-Please Call `init` First!")
         }
     },
-    newTask: function (url, name) {
+    newTask: function (url, name, start) {
         if (this.isLoaded) {
             var list = this.dlList;
             list[list.length] = {
@@ -99,7 +99,7 @@ var XHRDL = {
             }
             SakiProgress.showDiv();
             SakiProgress.setText("已添加新任务：" + name);
-            if (!this.DLEngine.isWorking) {
+            if (!this.DLEngine.isWorking && start) {
                 this.DLEngine.start();
             }
         } else {
@@ -166,13 +166,13 @@ var XHRDL = {
             }
             xhr.onerror = function (e) {
                 //TODO:支持处理不同类别出错
-                if(!taskInfo.errorRetry){
-                SakiProgress.setTextAlert(taskInfo.fileName + "下载失败，置入列尾等待重试");
-                taskInfo.errorRetry = true;
-                var list = XHRDL.dlList;
-                list[list.length] = taskInfo;
-                }else{
-                SakiProgress.setTextAlert(taskInfo.fileName + "下载又失败了，放弃");
+                if (!taskInfo.errorRetry) {
+                    SakiProgress.setTextAlert(taskInfo.fileName + "下载失败，置入列尾等待重试");
+                    taskInfo.errorRetry = true;
+                    var list = XHRDL.dlList;
+                    list[list.length] = taskInfo;
+                } else {
+                    SakiProgress.setTextAlert(taskInfo.fileName + "下载又失败了，放弃");
                 }
                 XHRDL.dlList.splice(0, 1);
                 XHRDL.DLEngine.checkNext();
